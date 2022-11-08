@@ -41,6 +41,11 @@ int main(int argc, char **argv, char **env) {
         top->en = vbdFlag();
         if(simcyc < 2)
             top->rst = 1;
+        else
+            top->rst = 0;
+        
+        vbdHex(1, top->dout & 0xF);
+        vbdBar(top->dout & 0xFF);
 
         // either simulation finished, or 'q' is pressed
         if ((Verilated::gotFinish()) || (vbdGetkey()=='q'))
