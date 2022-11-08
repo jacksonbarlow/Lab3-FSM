@@ -46,7 +46,7 @@ int main(int argc, char **argv, char **env) {
         
         vbdHex(2, (int(top->dout) >> 4) & 0xF);
         vbdHex(1, int(top->dout) & 0xF);
-        //vbdBar(top->dout & 0xFF);
+        
 
         // either simulation finished, or 'q' is pressed
         if ((Verilated::gotFinish()) || (vbdGetkey()=='q'))
