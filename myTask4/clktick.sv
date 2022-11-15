@@ -1,4 +1,4 @@
-module clktick(
+module clktick #(
     parameter WIDTH = 16
 )(
     input logic [WIDTH-1:0]         N,
@@ -22,7 +22,7 @@ module clktick(
                 end
             else begin
                 tick <= 1'b0;
-                count <= count = 1'b1;
+                count <= count - 1'b1;
                 end
             end 
     

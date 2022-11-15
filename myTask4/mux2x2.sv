@@ -1,4 +1,4 @@
-module mux(
+module mux2x2(
     input logic         inputOne,
     input logic         inputZero,
     input logic         selector,
