@@ -24,40 +24,30 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
     uint32_t* const oldp VL_ATTR_UNUSED = bufp->oldp(vlSymsp->__Vm_baseCode + 1);
     // Body
     if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[1U])) {
-        bufp->chgBit(oldp+0,(((0U != vlSelf->top__DOT__timeSignal__DOT__current_state) 
-                              & ((1U != vlSelf->top__DOT__timeSignal__DOT__current_state) 
-                                 & (2U == vlSelf->top__DOT__timeSignal__DOT__current_state)))));
+        bufp->chgBit(oldp+0,(vlSelf->top__DOT__time_out));
         bufp->chgBit(oldp+1,(vlSelf->top__DOT__tick));
-        bufp->chgCData(oldp+2,(vlSelf->top__DOT__randomNumberGenerator__DOT__sreg),7);
-        bufp->chgSData(oldp+3,(vlSelf->top__DOT__tickGenerator__DOT__count),16);
-        bufp->chgCData(oldp+4,(vlSelf->top__DOT__timeSignal__DOT__count),7);
-        bufp->chgIData(oldp+5,(vlSelf->top__DOT__timeSignal__DOT__current_state),32);
+        bufp->chgSData(oldp+2,(vlSelf->top__DOT__tickGenerator__DOT__count),16);
+        bufp->chgSData(oldp+3,(vlSelf->top__DOT__timeSignal__DOT__count),10);
+        bufp->chgIData(oldp+4,(vlSelf->top__DOT__timeSignal__DOT__current_state),32);
     }
     if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[2U])) {
+        bufp->chgCData(oldp+5,(vlSelf->top__DOT__randomNumberGenerator__DOT__sreg),7);
         bufp->chgBit(oldp+6,(vlSelf->top__DOT__cmd_delay));
         bufp->chgBit(oldp+7,(vlSelf->top__DOT__cmd_seq));
-        bufp->chgIData(oldp+8,(vlSelf->top__DOT__finiteStateMachine__DOT__current_state),32);
+        bufp->chgSData(oldp+8,(vlSelf->top__DOT__randomNumberGenerator__DOT__sreg),10);
     }
     bufp->chgBit(oldp+9,(vlSelf->clk));
     bufp->chgBit(oldp+10,(vlSelf->rst));
     bufp->chgBit(oldp+11,(vlSelf->fsm_trigger));
     bufp->chgCData(oldp+12,(vlSelf->dout),8);
-    bufp->chgBit(oldp+13,(vlSelf->top__DOT__fsm_en));
-    bufp->chgIData(oldp+14,(vlSelf->top__DOT__finiteStateMachine__DOT__next_state),32);
-    bufp->chgIData(oldp+15,(((0U == vlSelf->top__DOT__timeSignal__DOT__current_state)
-                              ? ((IData)(vlSelf->top__DOT__cmd_delay)
-                                  ? 1U : vlSelf->top__DOT__timeSignal__DOT__current_state)
-                              : ((1U == vlSelf->top__DOT__timeSignal__DOT__current_state)
-                                  ? ((0U == (IData)(vlSelf->top__DOT__timeSignal__DOT__count))
-                                      ? 2U : vlSelf->top__DOT__timeSignal__DOT__current_state)
-                                  : ((2U == vlSelf->top__DOT__timeSignal__DOT__current_state)
-                                      ? ((IData)(vlSelf->top__DOT__cmd_delay)
-                                          ? 3U : 0U)
-                                      : ((3U == vlSelf->top__DOT__timeSignal__DOT__current_state)
-                                          ? ((IData)(vlSelf->top__DOT__cmd_delay)
-                                              ? vlSelf->top__DOT__timeSignal__DOT__current_state
-                                              : 0U)
-                                          : 0U))))),32);
+    bufp->chgCData(oldp+13,(vlSelf->readRand),7);
+    bufp->chgBit(oldp+14,(((IData)(vlSelf->top__DOT__cmd_seq)
+                            ? (IData)(vlSelf->top__DOT__tick)
+                            : (IData)(vlSelf->top__DOT__time_out))));
+    bufp->chgIData(oldp+15,(vlSelf->top__DOT__finiteStateMachine__DOT__current_state),32);
+    bufp->chgIData(oldp+16,(vlSelf->top__DOT__finiteStateMachine__DOT__next_state),32);
+    bufp->chgBit(oldp+17,(vlSelf->top__DOT__timeSignal__DOT__triggeredAlready));
+    bufp->chgIData(oldp+18,(vlSelf->top__DOT__timeSignal__DOT__next_state),32);
 }
 
 void Vtop___024root__trace_cleanup(void* voidSelf, VerilatedVcd* /*unused*/) {

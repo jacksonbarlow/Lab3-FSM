@@ -18,12 +18,18 @@ class Vtop___024root final : public VerilatedModule {
     VL_IN8(en,0,0);
     VL_OUT8(dout,7,0);
     CData/*0:0*/ top__DOT__clktickout;
-    CData/*0:0*/ __Vclklast__TOP__clk;
-    CData/*0:0*/ __Vclklast__TOP__rst;
+    CData/*0:0*/ __Vtrigrprev__TOP__clk;
+    CData/*0:0*/ __Vtrigrprev__TOP__rst;
+    CData/*0:0*/ __VactContinue;
     VL_IN16(n,15,0);
     SData/*15:0*/ top__DOT__clktickIn__DOT__count;
     IData/*31:0*/ top__DOT__finiteMachine__DOT__current_state;
     IData/*31:0*/ top__DOT__finiteMachine__DOT__next_state;
+    IData/*31:0*/ __VstlIterCount;
+    IData/*31:0*/ __VactIterCount;
+    VlTriggerVec<1> __VstlTriggered;
+    VlTriggerVec<2> __VactTriggered;
+    VlTriggerVec<2> __VnbaTriggered;
 
     // INTERNAL VARIABLES
     Vtop__Syms* const vlSymsp;

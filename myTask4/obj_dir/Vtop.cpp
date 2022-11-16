@@ -15,6 +15,7 @@ Vtop::Vtop(VerilatedContext* _vcontextp__, const char* _vcname__)
     , rst{vlSymsp->TOP.rst}
     , fsm_trigger{vlSymsp->TOP.fsm_trigger}
     , dout{vlSymsp->TOP.dout}
+    , readRand{vlSymsp->TOP.readRand}
     , rootp{&(vlSymsp->TOP)}
 {
     // Register model with the context

@@ -21,31 +21,31 @@ VL_INLINE_OPT void Vtop___024root___ico_sequent__TOP__0(Vtop___024root* vlSelf) 
              | (6U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
             | (7U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state))
             ? ((0U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                ? (((IData)(vlSelf->top__DOT__fsm_en) 
+                ? (((IData)(vlSelf->top__DOT__tick) 
                     & (IData)(vlSelf->fsm_trigger))
                     ? 1U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                 : ((1U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                    ? ((IData)(vlSelf->top__DOT__fsm_en)
+                    ? ((IData)(vlSelf->top__DOT__tick)
                         ? 2U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                     : ((2U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                        ? ((IData)(vlSelf->top__DOT__fsm_en)
+                        ? ((IData)(vlSelf->top__DOT__tick)
                             ? 3U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                         : ((3U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                            ? ((IData)(vlSelf->top__DOT__fsm_en)
+                            ? ((IData)(vlSelf->top__DOT__tick)
                                 ? 4U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                             : ((4U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                                ? ((IData)(vlSelf->top__DOT__fsm_en)
+                                ? ((IData)(vlSelf->top__DOT__tick)
                                     ? 5U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                                 : ((5U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                                    ? ((IData)(vlSelf->top__DOT__fsm_en)
+                                    ? ((IData)(vlSelf->top__DOT__tick)
                                         ? 6U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                                     : ((6U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                                        ? ((IData)(vlSelf->top__DOT__fsm_en)
+                                        ? ((IData)(vlSelf->top__DOT__tick)
                                             ? 7U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                                        : ((IData)(vlSelf->top__DOT__fsm_en)
+                                        : ((IData)(vlSelf->top__DOT__tick)
                                             ? 8U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state))))))))
             : ((8U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                ? ((IData)(vlSelf->top__DOT__fsm_en)
+                ? ((IData)(vlSelf->top__DOT__time_out)
                     ? 0U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                 : 0U));
 }
@@ -70,62 +70,30 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___nba_sequent__TOP__0\n"); );
-    // Init
-    SData/*15:0*/ __Vdly__top__DOT__tickGenerator__DOT__count;
     // Body
-    __Vdly__top__DOT__tickGenerator__DOT__count = vlSelf->top__DOT__tickGenerator__DOT__count;
-    vlSelf->top__DOT__randomNumberGenerator__DOT__sreg 
-        = ((0x7eU & (IData)(vlSelf->top__DOT__randomNumberGenerator__DOT__sreg)) 
-           | (1U & VL_REDXOR_8((0x48U & (IData)(vlSelf->top__DOT__randomNumberGenerator__DOT__sreg)))));
-    vlSelf->top__DOT__timeSignal__DOT__count = (0x7fU 
-                                                & ((((IData)(vlSelf->rst) 
-                                                     | (IData)(vlSelf->top__DOT__cmd_delay)) 
-                                                    | (0U 
-                                                       == (IData)(vlSelf->top__DOT__timeSignal__DOT__count)))
-                                                    ? 
-                                                   ((IData)(vlSelf->top__DOT__k) 
-                                                    - (IData)(1U))
-                                                    : 
-                                                   ((IData)(vlSelf->top__DOT__timeSignal__DOT__count) 
-                                                    - (IData)(1U))));
+    vlSelf->__Vdly__top__DOT__randomNumberGenerator__DOT__sreg 
+        = vlSelf->top__DOT__randomNumberGenerator__DOT__sreg;
     if (vlSelf->rst) {
-        vlSelf->top__DOT__timeSignal__DOT__current_state = 0U;
-        vlSelf->top__DOT__tick = 0U;
-        __Vdly__top__DOT__tickGenerator__DOT__count = 0x1cU;
+        vlSelf->__Vdly__top__DOT__randomNumberGenerator__DOT__sreg = 1U;
+        vlSelf->top__DOT__finiteStateMachine__DOT__current_state = 0U;
     } else {
-        vlSelf->top__DOT__timeSignal__DOT__current_state 
-            = vlSelf->top__DOT__timeSignal__DOT__next_state;
-        if (vlSelf->top__DOT__cmd_seq) {
-            if ((0U == (IData)(vlSelf->top__DOT__tickGenerator__DOT__count))) {
-                vlSelf->top__DOT__tick = 1U;
-                __Vdly__top__DOT__tickGenerator__DOT__count = 0x1cU;
-            } else {
-                __Vdly__top__DOT__tickGenerator__DOT__count 
-                    = (0xffffU & ((IData)(vlSelf->top__DOT__tickGenerator__DOT__count) 
-                                  - (IData)(1U)));
-                vlSelf->top__DOT__tick = 0U;
-            }
-        }
+        vlSelf->__Vdly__top__DOT__randomNumberGenerator__DOT__sreg 
+            = ((0x7eU & ((IData)(vlSelf->top__DOT__randomNumberGenerator__DOT__sreg) 
+                         << 1U)) | (1U & ((IData)(vlSelf->top__DOT__randomNumberGenerator__DOT__sreg) 
+                                          ^ ((IData)(vlSelf->top__DOT__randomNumberGenerator__DOT__sreg) 
+                                             >> 5U))));
+        vlSelf->top__DOT__finiteStateMachine__DOT__current_state 
+            = vlSelf->top__DOT__finiteStateMachine__DOT__next_state;
     }
-    vlSelf->top__DOT__tickGenerator__DOT__count = __Vdly__top__DOT__tickGenerator__DOT__count;
-}
-
-VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__1(Vtop___024root* vlSelf) {
-    if (false && vlSelf) {}  // Prevent unused
-    Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___nba_sequent__TOP__1\n"); );
-    // Body
-    vlSelf->top__DOT__finiteStateMachine__DOT__current_state 
-        = ((IData)(vlSelf->rst) ? 0U : vlSelf->top__DOT__finiteStateMachine__DOT__next_state);
-    if (((((((((0U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state) 
-               | (1U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
-              | (2U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
-             | (3U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
-            | (4U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
-           | (5U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
-          | (6U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
-         | (7U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state))) {
-        vlSelf->dout = ((0U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
+    vlSelf->dout = (((((((((0U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state) 
+                           | (1U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
+                          | (2U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
+                         | (3U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
+                        | (4U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
+                       | (5U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
+                      | (6U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
+                     | (7U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state))
+                     ? ((0U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                          ? 0U : ((1U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                                   ? 1U : ((2U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                                            ? 3U : (
@@ -144,25 +112,83 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__1(Vtop___024root* vlSelf) 
                                                      ((6U 
                                                        == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                                                        ? 0x3fU
-                                                       : 0x7fU)))))));
-        vlSelf->top__DOT__cmd_seq = (0U != vlSelf->top__DOT__finiteStateMachine__DOT__current_state);
-    } else if ((8U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) {
-        vlSelf->dout = 0xffU;
-        vlSelf->top__DOT__cmd_seq = 1U;
+                                                       : 0x7fU)))))))
+                     : ((8U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
+                         ? 0xffU : 0U));
+}
+
+VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__1(Vtop___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___nba_sequent__TOP__1\n"); );
+    // Init
+    SData/*15:0*/ __Vdly__top__DOT__tickGenerator__DOT__count;
+    // Body
+    __Vdly__top__DOT__tickGenerator__DOT__count = vlSelf->top__DOT__tickGenerator__DOT__count;
+    vlSelf->top__DOT__timeSignal__DOT__count = (0x3ffU 
+                                                & (((IData)(vlSelf->top__DOT__cmd_delay) 
+                                                    & (~ (IData)(vlSelf->top__DOT__timeSignal__DOT__triggeredAlready)))
+                                                    ? 
+                                                   ((IData)(vlSelf->top__DOT__randomNumberGenerator__DOT__sreg) 
+                                                    - (IData)(1U))
+                                                    : 
+                                                   (((IData)(vlSelf->rst) 
+                                                     | (0U 
+                                                        == (IData)(vlSelf->top__DOT__timeSignal__DOT__count)))
+                                                     ? 
+                                                    ((IData)(vlSelf->top__DOT__randomNumberGenerator__DOT__sreg) 
+                                                     - (IData)(1U))
+                                                     : 
+                                                    ((IData)(vlSelf->top__DOT__timeSignal__DOT__count) 
+                                                     - (IData)(1U)))));
+    if (vlSelf->rst) {
+        vlSelf->top__DOT__tick = 0U;
+        __Vdly__top__DOT__tickGenerator__DOT__count = 0x1cU;
+        vlSelf->top__DOT__timeSignal__DOT__current_state = 0U;
     } else {
-        vlSelf->dout = 0U;
-        vlSelf->top__DOT__cmd_seq = 0U;
+        if (vlSelf->top__DOT__cmd_seq) {
+            if ((0U == (IData)(vlSelf->top__DOT__tickGenerator__DOT__count))) {
+                vlSelf->top__DOT__tick = 1U;
+                __Vdly__top__DOT__tickGenerator__DOT__count = 0x1cU;
+            } else {
+                __Vdly__top__DOT__tickGenerator__DOT__count 
+                    = (0xffffU & ((IData)(vlSelf->top__DOT__tickGenerator__DOT__count) 
+                                  - (IData)(1U)));
+                vlSelf->top__DOT__tick = 0U;
+            }
+        }
+        vlSelf->top__DOT__timeSignal__DOT__current_state 
+            = vlSelf->top__DOT__timeSignal__DOT__next_state;
     }
-    vlSelf->top__DOT__cmd_delay = ((~ ((((((((0U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state) 
-                                             | (1U 
-                                                == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
-                                            | (2U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
-                                           | (3U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
-                                          | (4U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
-                                         | (5U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
-                                        | (6U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
-                                       | (7U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state))) 
-                                   & (8U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state));
+    vlSelf->top__DOT__tickGenerator__DOT__count = __Vdly__top__DOT__tickGenerator__DOT__count;
+    vlSelf->top__DOT__time_out = ((0U != vlSelf->top__DOT__timeSignal__DOT__current_state) 
+                                  & ((1U != vlSelf->top__DOT__timeSignal__DOT__current_state) 
+                                     & (2U == vlSelf->top__DOT__timeSignal__DOT__current_state)));
+}
+
+VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__2(Vtop___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___nba_sequent__TOP__2\n"); );
+    // Body
+    vlSelf->top__DOT__randomNumberGenerator__DOT__sreg 
+        = vlSelf->__Vdly__top__DOT__randomNumberGenerator__DOT__sreg;
+    if (((((((((0U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state) 
+               | (1U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
+              | (2U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
+             | (3U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
+            | (4U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
+           | (5U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
+          | (6U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
+         | (7U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state))) {
+        if ((0U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) {
+            vlSelf->top__DOT__cmd_delay = 0U;
+            vlSelf->top__DOT__cmd_seq = 1U;
+        }
+    } else {
+        vlSelf->top__DOT__cmd_delay = (8U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state);
+        vlSelf->top__DOT__cmd_seq = (8U != vlSelf->top__DOT__finiteStateMachine__DOT__current_state);
+    }
 }
 
 VL_INLINE_OPT void Vtop___024root___nba_comb__TOP__0(Vtop___024root* vlSelf) {
@@ -170,24 +196,6 @@ VL_INLINE_OPT void Vtop___024root___nba_comb__TOP__0(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___nba_comb__TOP__0\n"); );
     // Body
-    vlSelf->top__DOT__timeSignal__DOT__next_state = 
-        ((0U == vlSelf->top__DOT__timeSignal__DOT__current_state)
-          ? ((IData)(vlSelf->top__DOT__cmd_delay) ? 1U
-              : vlSelf->top__DOT__timeSignal__DOT__current_state)
-          : ((1U == vlSelf->top__DOT__timeSignal__DOT__current_state)
-              ? ((0U == (IData)(vlSelf->top__DOT__timeSignal__DOT__count))
-                  ? 2U : vlSelf->top__DOT__timeSignal__DOT__current_state)
-              : ((2U == vlSelf->top__DOT__timeSignal__DOT__current_state)
-                  ? ((IData)(vlSelf->top__DOT__cmd_delay)
-                      ? 3U : 0U) : ((3U == vlSelf->top__DOT__timeSignal__DOT__current_state)
-                                     ? ((IData)(vlSelf->top__DOT__cmd_delay)
-                                         ? vlSelf->top__DOT__timeSignal__DOT__current_state
-                                         : 0U) : 0U))));
-    vlSelf->top__DOT__fsm_en = ((IData)(vlSelf->top__DOT__cmd_seq)
-                                 ? (IData)(vlSelf->top__DOT__tick)
-                                 : ((0U != vlSelf->top__DOT__timeSignal__DOT__current_state) 
-                                    & ((1U != vlSelf->top__DOT__timeSignal__DOT__current_state) 
-                                       & (2U == vlSelf->top__DOT__timeSignal__DOT__current_state))));
     vlSelf->top__DOT__finiteStateMachine__DOT__next_state 
         = (((((((((0U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state) 
                   | (1U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
@@ -198,33 +206,53 @@ VL_INLINE_OPT void Vtop___024root___nba_comb__TOP__0(Vtop___024root* vlSelf) {
              | (6U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)) 
             | (7U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state))
             ? ((0U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                ? (((IData)(vlSelf->top__DOT__fsm_en) 
+                ? (((IData)(vlSelf->top__DOT__tick) 
                     & (IData)(vlSelf->fsm_trigger))
                     ? 1U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                 : ((1U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                    ? ((IData)(vlSelf->top__DOT__fsm_en)
+                    ? ((IData)(vlSelf->top__DOT__tick)
                         ? 2U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                     : ((2U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                        ? ((IData)(vlSelf->top__DOT__fsm_en)
+                        ? ((IData)(vlSelf->top__DOT__tick)
                             ? 3U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                         : ((3U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                            ? ((IData)(vlSelf->top__DOT__fsm_en)
+                            ? ((IData)(vlSelf->top__DOT__tick)
                                 ? 4U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                             : ((4U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                                ? ((IData)(vlSelf->top__DOT__fsm_en)
+                                ? ((IData)(vlSelf->top__DOT__tick)
                                     ? 5U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                                 : ((5U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                                    ? ((IData)(vlSelf->top__DOT__fsm_en)
+                                    ? ((IData)(vlSelf->top__DOT__tick)
                                         ? 6U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                                     : ((6U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                                        ? ((IData)(vlSelf->top__DOT__fsm_en)
+                                        ? ((IData)(vlSelf->top__DOT__tick)
                                             ? 7U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                                        : ((IData)(vlSelf->top__DOT__fsm_en)
+                                        : ((IData)(vlSelf->top__DOT__tick)
                                             ? 8U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state))))))))
             : ((8U == vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
-                ? ((IData)(vlSelf->top__DOT__fsm_en)
+                ? ((IData)(vlSelf->top__DOT__time_out)
                     ? 0U : vlSelf->top__DOT__finiteStateMachine__DOT__current_state)
                 : 0U));
+    if ((0U == vlSelf->top__DOT__timeSignal__DOT__current_state)) {
+        if (vlSelf->top__DOT__cmd_delay) {
+            vlSelf->top__DOT__timeSignal__DOT__triggeredAlready = 1U;
+            vlSelf->top__DOT__timeSignal__DOT__next_state = 1U;
+        } else {
+            vlSelf->top__DOT__timeSignal__DOT__next_state 
+                = vlSelf->top__DOT__timeSignal__DOT__current_state;
+        }
+    } else {
+        vlSelf->top__DOT__timeSignal__DOT__next_state 
+            = ((1U == vlSelf->top__DOT__timeSignal__DOT__current_state)
+                ? ((0U == (IData)(vlSelf->top__DOT__timeSignal__DOT__count))
+                    ? 2U : vlSelf->top__DOT__timeSignal__DOT__current_state)
+                : ((2U == vlSelf->top__DOT__timeSignal__DOT__current_state)
+                    ? ((IData)(vlSelf->top__DOT__cmd_delay)
+                        ? 3U : 0U) : ((3U == vlSelf->top__DOT__timeSignal__DOT__current_state)
+                                       ? ((IData)(vlSelf->top__DOT__cmd_delay)
+                                           ? vlSelf->top__DOT__timeSignal__DOT__current_state
+                                           : 0U) : 0U)));
+    }
 }
 
 void Vtop___024root___eval_nba(Vtop___024root* vlSelf) {
@@ -234,10 +262,13 @@ void Vtop___024root___eval_nba(Vtop___024root* vlSelf) {
     // Body
     if (vlSelf->__VnbaTriggered.at(0U)) {
         Vtop___024root___nba_sequent__TOP__0(vlSelf);
-        vlSelf->__Vm_traceActivity[1U] = 1U;
     }
     if (vlSelf->__VnbaTriggered.at(1U)) {
         Vtop___024root___nba_sequent__TOP__1(vlSelf);
+        vlSelf->__Vm_traceActivity[1U] = 1U;
+    }
+    if (vlSelf->__VnbaTriggered.at(0U)) {
+        Vtop___024root___nba_sequent__TOP__2(vlSelf);
         vlSelf->__Vm_traceActivity[2U] = 1U;
     }
     if ((vlSelf->__VnbaTriggered.at(0U) | vlSelf->__VnbaTriggered.at(1U))) {
